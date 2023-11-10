@@ -1,0 +1,16 @@
+<configuration>
+
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%t - %logger - %level - %message%n%xException</pattern>
+    </encoder>
+  </appender>
+
+  <root level="ERROR">
+    <appender-ref ref="STDOUT" />
+  </root>
+
+  <logger name="com.linecorp.armeria" level="INFO" />
+  <logger name="com.linecorp.armeria.logging.access" level="DEBUG" />
+
+</configuration>
