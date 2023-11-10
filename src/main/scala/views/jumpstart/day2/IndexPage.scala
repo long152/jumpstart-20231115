@@ -39,16 +39,16 @@ case class IndexPage(tasks: List[Task], addTaskMapping: Mapping[String]):
 
         h3(cls := "ui header", "Tasks: ", tasks.size),
 
-        /**
+        /*
          * Implement a table that lists down in a table, with the below structure:
          * table[class="ui very basic table"]:
-         * tbody:
-         * tr:
-         * td[class="collapsing] > Task index, starting at 1
-         * td > Task description [Strikethrough if the task is completed]
-         * td[class="collapsing"]
-         * button > Complete [Marks task as completed]
-         * button > Delete [Deletes task]
+         *    tbody:
+         *        tr:
+         *            td[class="collapsing] > Task index, starting at 1
+         *            td > Task description [Strikethrough if the task is completed]
+         *            td[class="collapsing"]
+         *                button > Complete [Marks task as completed]
+         *                button > Delete [Deletes task]
          */
       ),
 
