@@ -50,6 +50,34 @@ case class IndexPage(tasks: List[Task], addTaskMapping: Mapping[String]):
          *                button > Complete [Marks task as completed]
          *                button > Delete [Deletes task]
          */
+
+        table(
+          cls := "ui very basic table",
+          tbody(
+            tasks.zipWithIndex.map { (task, index) =>
+              tr(
+                td(cls := "collapsing", index + 1),
+                ifTrue(
+                  task.isCompleted,
+                  td(s(task.description)),
+                ),
+                ifFalse(
+                  task.isCompleted,
+                  td(task.description)
+                ),
+                td(
+                  cls := "collapsing",
+                  form(display := "inline-block", method := "POST", action := HomeController.completeTask(task.id).endpoint.url)(
+                    button(cls := "ui green button", "Complete")
+                  ),
+                  form(display := "inline-block", method := "POST", action := HomeController.deleteTask(task.id).endpoint.url)(
+                    button(cls := "ui red button", "Delete")
+                  )
+                )
+              )
+            }
+          )
+        )
       ),
 
       script(tpe := "text/javascript", src := "https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"),
